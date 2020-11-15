@@ -76,7 +76,7 @@ public class Doctor extends Person{
     public static void populateDoctorsArray() throws SQLException{
         Statement stmt=null;
         stmt=LocalDataBaseConnection.connection.createStatement();
-        String sqlQuery="select * from " + LocalDataBaseConnection.DbName + ".doctor";
+        String sqlQuery="select * from " + LocalDataBaseConnection.DB_NAME + ".doctor";
         ResultSet rs=stmt.executeQuery(sqlQuery);
         //step4:extract data from result set;
         while(rs.next()){
@@ -110,7 +110,7 @@ public class Doctor extends Person{
              
         //step3:execute a query
         stmt=LocalDataBaseConnection.connection.createStatement();
-        String sqlQuery="select MONDAY from "+LocalDataBaseConnection.DbName+".\"weeklyfreecalendar\" where DOCTORNAME=?";
+        String sqlQuery="select MONDAY from "+LocalDataBaseConnection.DB_NAME + ".\"weeklyfreecalendar\" where DOCTORNAME=?";
         PreparedStatement pstmt=LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
         pstmt.setString(1, PatientInfos_Frame.selectedDoctorName);
         ResultSet rs=pstmt.executeQuery();
@@ -123,7 +123,7 @@ public class Doctor extends Person{
           for(int i=0;i<freeCalendar1.length;i++){
               freeCalendar1[i]="Monday:"+freeCalendar1[i];
           }
-          sqlQuery="select TUESDAY from "+LocalDataBaseConnection.DbName+".\"weeklyfreecalendar\" where DOCTORNAME=?";
+          sqlQuery="select TUESDAY from "+LocalDataBaseConnection.DB_NAME + ".\"weeklyfreecalendar\" where DOCTORNAME=?";
           pstmt=LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
          pstmt.setString(1, PatientInfos_Frame.selectedDoctorName);
          rs=pstmt.executeQuery();
@@ -136,7 +136,7 @@ public class Doctor extends Person{
           for(int i=0;i<freeCalendar2.length;i++){
               freeCalendar2[i]="Tuesday:"+freeCalendar2[i];
           }
-          sqlQuery="select WEDNESDAY from "+LocalDataBaseConnection.DbName+"weeklyfreecalendar\" where DOCTORNAME=?";
+          sqlQuery="select WEDNESDAY from "+LocalDataBaseConnection.DB_NAME + "weeklyfreecalendar\" where DOCTORNAME=?";
          pstmt=LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
         pstmt.setString(1, PatientInfos_Frame.selectedDoctorName);
          rs=pstmt.executeQuery();
@@ -149,7 +149,7 @@ public class Doctor extends Person{
           for(int i=0;i<freeCalendar3.length;i++){
               freeCalendar3[i]="WEDNESDAY:"+freeCalendar3[i];
           }
-          sqlQuery="select THURSDAY from "+LocalDataBaseConnection.DbName+".\"weeklyfreecalendar\" where DOCTORNAME=?";
+          sqlQuery="select THURSDAY from "+LocalDataBaseConnection.DB_NAME + ".\"weeklyfreecalendar\" where DOCTORNAME=?";
          pstmt=LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
         pstmt.setString(1, PatientInfos_Frame.selectedDoctorName);
          rs=pstmt.executeQuery();
@@ -162,7 +162,7 @@ public class Doctor extends Person{
           for(int i=0;i<freeCalendar4.length;i++){
               freeCalendar4[i]="THURSDAY:"+freeCalendar4[i];
           }
-          sqlQuery="select FRIDAY from "+LocalDataBaseConnection.DbName+".\"weeklyfreecalendar\" where DOCTORNAME=?";
+          sqlQuery="select FRIDAY from "+LocalDataBaseConnection.DB_NAME+".\"weeklyfreecalendar\" where DOCTORNAME=?";
          pstmt=LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
         pstmt.setString(1, PatientInfos_Frame.selectedDoctorName);
          rs=pstmt.executeQuery();
@@ -175,7 +175,7 @@ public class Doctor extends Person{
           for(int i=0;i<freeCalendar5.length;i++){
               freeCalendar5[i]="FRIDAY:"+freeCalendar5[i];
           }
-          sqlQuery="select SATURDAY from "+LocalDataBaseConnection.DbName+"\"weeklyfreecalendar\" where DOCTORNAME=?";
+          sqlQuery="select SATURDAY from "+LocalDataBaseConnection.DB_NAME+"\"weeklyfreecalendar\" where DOCTORNAME=?";
          pstmt=LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
         pstmt.setString(1, PatientInfos_Frame.selectedDoctorName);
          rs=pstmt.executeQuery();
@@ -188,7 +188,7 @@ public class Doctor extends Person{
           for(int i=0;i<freeCalendar6.length;i++){
               freeCalendar6[i]="SATRURDAY:"+freeCalendar6[i];
           }
-          sqlQuery="select SUNDAY from "+LocalDataBaseConnection.DbName+".\"weeklyfreecalendar\" where DOCTORNAME=?";
+          sqlQuery="select SUNDAY from "+LocalDataBaseConnection.DB_NAME + ".\"weeklyfreecalendar\" where DOCTORNAME=?";
          pstmt=LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
         pstmt.setString(1, PatientInfos_Frame.selectedDoctorName);
          rs=pstmt.executeQuery();

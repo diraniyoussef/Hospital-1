@@ -99,8 +99,8 @@ public class Patient extends Person {
 
             //step3:execute a query
             stmt = LocalDataBaseConnection.connection.createStatement();
-            String sqlQuery = "select APPOINTMENTHOUR from " + LocalDataBaseConnection.DbName + ".patient "
-                    + "where " + LocalDataBaseConnection.DbName + ".patient.ID=?";
+            String sqlQuery = "select APPOINTMENTHOUR from " + LocalDataBaseConnection.DB_NAME + ".patient "
+                    + "where " + LocalDataBaseConnection.DB_NAME + ".patient.ID=?";
             PreparedStatement pstmt = LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
             pstmt.setInt(1, Login.id);
             ResultSet rs = pstmt.executeQuery();
@@ -108,8 +108,8 @@ public class Patient extends Person {
                 this.appointmentHour = rs.getString("APPOINTMENTHOUR");
             }
             if(!rs.next()){
-            sqlQuery = "select APPOINTMENTHOUR from " + LocalDataBaseConnection.DbName + ".patient "
-                    + "where " + LocalDataBaseConnection.DbName + ".patient.PHONENB=?";
+            sqlQuery = "select APPOINTMENTHOUR from " + LocalDataBaseConnection.DB_NAME + ".patient "
+                    + "where " + LocalDataBaseConnection.DB_NAME + ".patient.PHONENB=?";
             pstmt = LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
             pstmt.setInt(1, Login.id);
              rs = pstmt.executeQuery();
@@ -140,8 +140,8 @@ public class Patient extends Person {
             //step3:execute a query
             stmt = LocalDataBaseConnection.connection.createStatement();
             String sqlQuery = "select OPERATIONNAME,OPERATIONHOUR,MYDOCTOR "
-                    + "from " + LocalDataBaseConnection.DbName + ".patient "
-                    + "where " + LocalDataBaseConnection.DbName + ".patient.ID=?";
+                    + "from " + LocalDataBaseConnection.DB_NAME + ".patient "
+                    + "where " + LocalDataBaseConnection.DB_NAME + ".patient.ID=?";
             PreparedStatement pstmt = LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
             pstmt.setInt(1, Login.id);
             ResultSet rs = pstmt.executeQuery();
@@ -152,8 +152,8 @@ public class Patient extends Person {
             }
             if(!rs.next()){
               sqlQuery = "select OPERATIONNAME,OPERATIONHOUR,MYDOCTOR "
-                    + "from " + LocalDataBaseConnection.DbName + ".patient "
-                    + "where " + LocalDataBaseConnection.DbName + ".patient.PHONENB=?";
+                    + "from " + LocalDataBaseConnection.DB_NAME + ".patient "
+                    + "where " + LocalDataBaseConnection.DB_NAME + ".patient.PHONENB=?";
              pstmt = LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
             pstmt.setInt(1, Login.id);
              rs = pstmt.executeQuery();
@@ -201,9 +201,9 @@ public class Patient extends Person {
     public static void getAppointmentDate() throws Exception {
         Statement stmt = null;
         stmt = LocalDataBaseConnection.connection.createStatement();
-        String sqlQuery = "Update " + LocalDataBaseConnection.DbName + ".patient"
+        String sqlQuery = "Update " + LocalDataBaseConnection.DB_NAME + ".patient"
                 + " set APPOINTMENTHOUR=?,MYDOCTOR=?"
-                + " where " + LocalDataBaseConnection.DbName + ".patient.ID=?";
+                + " where " + LocalDataBaseConnection.DB_NAME + ".patient.ID=?";
 
         PreparedStatement pstmt = LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
         pstmt.setString(1, PatientInfos_Frame.selectedAppointment);
@@ -222,9 +222,9 @@ public class Patient extends Person {
             calendar = calendar.replaceAll("Monday:", "");
             stmt = null;
             stmt = LocalDataBaseConnection.connection.createStatement();
-            sqlQuery = "Update " + LocalDataBaseConnection.DbName + ".weeklyfreecalendar"
+            sqlQuery = "Update " + LocalDataBaseConnection.DB_NAME + ".weeklyfreecalendar"
                     + " set MONDAY=? "
-                    + "where " + LocalDataBaseConnection.DbName + ".weeklyfreecalendar.DOCTORNAME=?";
+                    + "where " + LocalDataBaseConnection.DB_NAME + ".weeklyfreecalendar.DOCTORNAME=?";
 
             pstmt = LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
             pstmt.setString(1, calendar);
@@ -242,9 +242,9 @@ public class Patient extends Person {
             calendar = calendar.replaceAll("Tuesday:", "");
             stmt = null;
             stmt = LocalDataBaseConnection.connection.createStatement();
-            sqlQuery = "Update " + LocalDataBaseConnection.DbName + ".weeklyfreecalendar"
+            sqlQuery = "Update " + LocalDataBaseConnection.DB_NAME + ".weeklyfreecalendar"
                     + " set TUESDAY=?"
-                    + " where " + LocalDataBaseConnection.DbName + ".weeklyfreecalendar.DOCTORNAME=?";
+                    + " where " + LocalDataBaseConnection.DB_NAME + ".weeklyfreecalendar.DOCTORNAME=?";
 
             pstmt = LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
             pstmt.setString(1, calendar);
@@ -262,9 +262,9 @@ public class Patient extends Person {
             calendar = calendar.replaceAll("Wednesday:", "");
             stmt = null;
             stmt = LocalDataBaseConnection.connection.createStatement();
-            sqlQuery = "Update " + LocalDataBaseConnection.DbName + ".weeklyfreecalendar"
+            sqlQuery = "Update " + LocalDataBaseConnection.DB_NAME + ".weeklyfreecalendar"
                     + " set WEDNESDAY=?"
-                    + " where " + LocalDataBaseConnection.DbName + ".weeklyfreecalendar.DOCTORNAME=?";
+                    + " where " + LocalDataBaseConnection.DB_NAME + ".weeklyfreecalendar.DOCTORNAME=?";
 
             pstmt = LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
             pstmt.setString(1, calendar);
@@ -282,9 +282,9 @@ public class Patient extends Person {
             calendar = calendar.replaceAll("Thursday:", "");
             stmt = null;
             stmt = LocalDataBaseConnection.connection.createStatement();
-            sqlQuery = "Update " + LocalDataBaseConnection.DbName + ".weeklyfreecalendar"
+            sqlQuery = "Update " + LocalDataBaseConnection.DB_NAME + ".weeklyfreecalendar"
                     + " set THURSDAY=?"
-                    + " where " + LocalDataBaseConnection.DbName + ".weeklyfreecalendar.DOCTORNAME=?";
+                    + " where " + LocalDataBaseConnection.DB_NAME + ".weeklyfreecalendar.DOCTORNAME=?";
 
             pstmt = LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
             pstmt.setString(1, calendar);
@@ -302,9 +302,9 @@ public class Patient extends Person {
             calendar = calendar.replaceAll("Friday:", "");
             stmt = null;
             stmt = LocalDataBaseConnection.connection.createStatement();
-            sqlQuery = "Update " + LocalDataBaseConnection.DbName + ".weeklyfreecalendar"
+            sqlQuery = "Update " + LocalDataBaseConnection.DB_NAME + ".weeklyfreecalendar"
                     + " set FRIDAY=?"
-                    + " where " + LocalDataBaseConnection.DbName + ".weeklyfreecalendar.DOCTORNAME=?";
+                    + " where " + LocalDataBaseConnection.DB_NAME + ".weeklyfreecalendar.DOCTORNAME=?";
 
             pstmt = LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
             pstmt.setString(1, calendar);
@@ -322,9 +322,9 @@ public class Patient extends Person {
             calendar = calendar.replaceAll("Saturday:", "");
             stmt = null;
             stmt = LocalDataBaseConnection.connection.createStatement();
-            sqlQuery = "Update " + LocalDataBaseConnection.DbName + ".weeklyfreecalendar"
+            sqlQuery = "Update " + LocalDataBaseConnection.DB_NAME + ".weeklyfreecalendar"
                     + " set SARURDAY=?"
-                    + " where " + LocalDataBaseConnection.DbName + ".weeklyfreecalendar.DOCTORNAME=?";
+                    + " where " + LocalDataBaseConnection.DB_NAME + ".weeklyfreecalendar.DOCTORNAME=?";
 
             pstmt = LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
             pstmt.setString(1, calendar);
@@ -342,9 +342,9 @@ public class Patient extends Person {
             calendar = calendar.replaceAll("Sunday:", "");
             stmt = null;
             stmt = LocalDataBaseConnection.connection.createStatement();
-            sqlQuery = "Update " + LocalDataBaseConnection.DbName + ".weeklyfreecalendar"
+            sqlQuery = "Update " + LocalDataBaseConnection.DB_NAME + ".weeklyfreecalendar"
                     + " set SUNDAY=?"
-                    + " where " + LocalDataBaseConnection.DbName + ".weeklyfreecalendar.DOCTORNAME=?";
+                    + " where " + LocalDataBaseConnection.DB_NAME + ".weeklyfreecalendar.DOCTORNAME=?";
 
             pstmt = LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
             pstmt.setString(1, calendar);
@@ -363,12 +363,12 @@ public class Patient extends Person {
         try {
 
             //step3:execute a query
-            String sqlQuery = "select " + LocalDataBaseConnection.DbName + ".patient.*  from "
-                    + LocalDataBaseConnection.DbName + ".patient ," + LocalDataBaseConnection.DbName + ".doctor "
-                    + "where " + LocalDataBaseConnection.DbName + ".patient."
-                    + "MYDOCTOR = Concat(Concat(" + LocalDataBaseConnection.DbName + ".doctor.NAME,' '), "
-                    + LocalDataBaseConnection.DbName + ".doctor.FAMILYNAME) "
-                    + "AND " + LocalDataBaseConnection.DbName + ".doctor.ID=?";
+            String sqlQuery = "select " + LocalDataBaseConnection.DB_NAME + ".patient.*  from "
+                    + LocalDataBaseConnection.DB_NAME + ".patient ," + LocalDataBaseConnection.DB_NAME + ".doctor "
+                    + "where " + LocalDataBaseConnection.DB_NAME + ".patient."
+                    + "MYDOCTOR = Concat(Concat(" + LocalDataBaseConnection.DB_NAME + ".doctor.NAME,' '), "
+                    + LocalDataBaseConnection.DB_NAME + ".doctor.FAMILYNAME) "
+                    + "AND " + LocalDataBaseConnection.DB_NAME + ".doctor.ID=?";
 
             PreparedStatement pstmt = LocalDataBaseConnection.connection.prepareStatement(sqlQuery);
             pstmt.setInt(1, Login.id);

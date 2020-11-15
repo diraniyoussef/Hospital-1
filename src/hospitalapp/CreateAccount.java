@@ -291,7 +291,7 @@ DefaultListModel defaultListModel=new DefaultListModel();
             || phoneNbTextField.getText().isEmpty() || passWord.getText().isEmpty())) {
                     
                 stmt=LocalDataBaseConnection.connection.createStatement();
-                String sqlQuery="Insert into " + LocalDataBaseConnection.DbName + ".patient "
+                String sqlQuery="Insert into " + LocalDataBaseConnection.DB_NAME + ".patient "
                 + "(ID,NAME,FAMILYNAME,BLOODTYPE,MYROOM,PHONENB,PASSWORD,HASHEDPASSWORD) "
                 + "values (?,?,?,?,?,?,?,?)";
                 

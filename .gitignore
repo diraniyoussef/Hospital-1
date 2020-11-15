@@ -1,1 +1,4 @@
 config_app.xml
+/nbproject/private/
+/build/
+/dist/
