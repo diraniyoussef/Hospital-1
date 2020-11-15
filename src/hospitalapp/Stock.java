@@ -52,7 +52,7 @@ public class Stock {
              
         //step3:execute a query
         stmt=LocalDataBaseConnection.connection.createStatement();
-        String sqlQuery="select * from " + LocalDataBaseConnection.DbName + ".stock";
+        String sqlQuery="select * from " + LocalDataBaseConnection.DB_NAME + ".stock";
 
         ResultSet rs=stmt.executeQuery(sqlQuery);
         //step4:extract data from result set;

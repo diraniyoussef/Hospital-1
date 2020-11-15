@@ -1,6 +1,5 @@
 package hospitalapp;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -32,10 +31,10 @@ public class LocalDataBaseConnection {
     static HashMap<String, String> accountsByNb = new HashMap<>();
     static String adminPass;
     //static final String JDBC_Driver="oracle.jdbc.driver.OracleDriver";
-    static final String JDBC_Driver="com.mysql.jdbc.Driver";
+    static final String JDBC_DRIVER="com.mysql.jdbc.Driver";
     //static final String DB_URL="jdbc:oracle:thin:@localhost:1522:ORCL";
-    static final String DbName = "hospitaldb";
-    static final String DB_URL="jdbc:mysql://localhost:3306/" + DbName + "?autoReconnect=true&useSSL=false";
+    static final String DB_NAME = "hospitaldb";
+    static final String DB_URL="jdbc:mysql://localhost:3306/" + DB_NAME + "?autoReconnect=true&useSSL=false";
 
     //DataBase Credentials
     static String userName;
@@ -59,7 +58,7 @@ public class LocalDataBaseConnection {
         Statement stmt= null;
         try{
             //step1:Register jdbc Driver
-            Class.forName(JDBC_Driver);
+            Class.forName(JDBC_DRIVER);
             // setp2:Open a connection
             userName="root";            
             password=passwordsFetching();
@@ -102,14 +101,14 @@ public class LocalDataBaseConnection {
              
             //step3:execute a query
             stmt = LocalDataBaseConnection.connection.createStatement();
-            String sqlQuery = "select ID, HASHEDPASSWORD from " + DbName + ".patient";
+            String sqlQuery = "select ID, HASHEDPASSWORD from " + DB_NAME + ".patient";
 
             ResultSet rs=stmt.executeQuery(sqlQuery);
             //step4:extract data from result set;
             while(rs.next()){
                 accountsById.put(rs.getInt("ID"), rs.getString("HASHEDPASSWORD"));
             }
-            sqlQuery="select ID,HASHEDPASSWORD from " + DbName + ".doctor";
+            sqlQuery="select ID,HASHEDPASSWORD from " + DB_NAME + ".doctor";
 
             rs=stmt.executeQuery(sqlQuery);
          
@@ -149,7 +148,7 @@ public class LocalDataBaseConnection {
              
             //step3:execute a query
             stmt = LocalDataBaseConnection.connection.createStatement();
-            String sqlQuery = "select PHONENB, HASHEDPASSWORD from " + DbName + ".patient";
+            String sqlQuery = "select PHONENB, HASHEDPASSWORD from " + DB_NAME + ".patient";
            
             ResultSet rs=stmt.executeQuery(sqlQuery);
             //step4:extract data from result set;
